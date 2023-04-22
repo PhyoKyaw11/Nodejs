@@ -1,8 +1,12 @@
 const rout = require('express').Router();
+const controller = require("../Controller/report.js")
 
-rout.route("/:num")
-.get(req,res) => {res.send("get of report" + req.params.num)}
-.patch(req,res) => {res.send("patch of report" + req.params.num)}
-.delete(req,res) => {res.send("delete of report" + req.params.num)}
+rout.all("/",controller.showError)
+
+rout.route("/:id")
+.get(controller.get)
+.post(controller.add)
+.patch(controller.update)
+.delete(controller.del)
 
 module.exports = rout

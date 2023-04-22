@@ -1,8 +1,12 @@
 const router = require('express').Router();
+const controller = require("../Controller/user.js")
+
+router.post("/",controller.post)
 
 router.route("/:id")
-.get((req,res)=>{res.send("get of user")})
-.patch((req,res)=>{res.send("patch of user" + req.params.id)})
-.delete((req,res)=>{res.send("delete of user" + req.params.id)})
+.get(controller.get)
+.patch(controller.patch)
+.delete(controller.del)
+.all(controller.all)
 
 module.exports = router
